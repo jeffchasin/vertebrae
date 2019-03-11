@@ -41,6 +41,7 @@ var Comment = Backbone.Model.extend({
     }
   }
 });
+
 var CommentView = Backbone.View.extend({
   initialize: function() {
     this.model.on('change:votes', this.render, this);
@@ -98,7 +99,7 @@ var CommentsView = Backbone.View.extend({
     var html = [
       '<ul>',
       '</ul>',
-      '<span class="votes">',
+      '<span class="votes">Total votes: ',
         // The total number of votes
         this.collection.reduce(function(memo, comment) {
           return memo + comment.get('votes');
@@ -112,19 +113,21 @@ var CommentsView = Backbone.View.extend({
     this.$el.find('ul').append(this.collection.map(function(comment) {
       // YOUR CODE HERE
 
-      return [
-      '<li>',
-        '<span class="votes">',
-          comment.votes(),
-        '</span>',
-        '<span class="comment">',
-          comment.get('message'),
-        '</span>',
-        '</br>',
-      '</li>'
-    ].join('');
+      return new CommentView({model: comment}).render();
 
-      return comment;
+    //   return [
+    //   '<li>',
+    //     '<span class="votes">',
+    //       comment.votes(),
+    //     '</span>',
+    //     '<span class="comment">',
+    //       comment.get('message'),
+    //     '</span>',
+    //     '</br>',
+    //   '</li>'
+    // ].join('');
+
+      // return comment;
     }));
 
     return this.$el;
@@ -135,11 +138,11 @@ var CommentsView = Backbone.View.extend({
 
 /* Create a few new comment models using our Comment class: */
 var commentList = [
-  new Comment('Doug!'), // default to 0 votes
-  new Comment('Doug?', 1),
-  new Comment('Doug.', 2),
-  new Comment('"Doug".', 3),
-  new Comment('Doug?!', 4)];
+  new Comment(' Doug1'), // default to 0 votes
+  new Comment(' Doug2', 1),
+  new Comment(' Doug3', 2),
+  new Comment(' "Doug4".', 3),
+  new Comment(' Doug5', 4)];
 
 // Add all of these to a new collection:
 var comments = new Comments(commentList);

@@ -56,19 +56,21 @@ myTweet.set('message', 'Hello, world!');
 
 window.alert(myTweet.get('message'));
 
-/* - Backbone EVENTS ----------------------------------------------------------
- * Backbone gives us the ability to listen for events on our models,
- * similar to how we register events on the DOM using jQuery.
- * If something in our model changes, we can listen for that change and react
- * accordingly when the event happens.  When we want to register a listener,
- * we use the method `model.on`.
+/* - Backbone EVENTS
+ *   ---------------------------------------------------------- Backbone
+ *   gives us the ability to listen for events on our models, similar to
+ *   how we register events on the DOM using jQuery. If something in our
+ *   model changes, we can listen for that change and react accordingly
+ *   when the event happens.  When we want to register a listener, we
+ *   use the method `model.on`.
  *
  * `model.on` takes two arguments:
  * 1. The event name being triggered.
- * 2. A function that does the thing you want to do when the event happens (i.e. the event handler, or callback function).
+ * 2. A function that does the thing you want to do when the event
+ *    happens (i.e. the event handler, or callback function).
  *
- * Backbone gives you a couple of events for free, like `change`.
- * This event is triggered automatically if something changes in the model:
+ * Backbone gives you a couple of events for free, like `change`. This
+ * event is triggered automatically if something changes in the model:
  * an attribute is added to the model, is deleted, or is changed.
  *
  * Before we listen for our first event, take a gander at the reference:
@@ -76,7 +78,7 @@ window.alert(myTweet.get('message'));
  */
 
 /* Listen for our model's `change` event: */
-myTweet.on('change',
+myTweet.on('change:message',
   function(/* this event holds information about the change: */ e) {
     // Let ourselves know that something was changed:
     console.info('Something in this tweet model was changed!');

@@ -1,3 +1,5 @@
+.gitignore
+package-lock.json
 ### node etc ###
 
 # Logs
@@ -38,3 +40,4 @@ lib/
 # Swap files (for the vim users in all of us)
 /**/*.swp
 
+.vs/
